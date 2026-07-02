@@ -1,0 +1,23 @@
+{
+  "name": "okfbrain",
+  "displayName": "okfbrain — OKF knowledge brains",
+  "version": "0.10.0",
+  "description": "Build fidelity-first OKF knowledge brains and GROW them big, autonomously, in audit-expand loops - one phrase, any model, any harness. Per-domain fidelity profiles, provenance, explicit gaps, deterministic engine.",
+  "author": {
+    "name": "Lucas Lucena",
+    "url": "https://github.com/Lucasrvdl"
+  },
+  "homepage": "https://github.com/Lucasrvdl/okfbrain",
+  "repository": "https://github.com/Lucasrvdl/okfbrain",
+  "license": "MIT",
+  "keywords": [
+    "okf",
+    "open-knowledge-format",
+    "knowledge",
+    "markdown",
+    "brain",
+    "fidelity",
+    "provenance",
+    "agents"
+  ]
+}

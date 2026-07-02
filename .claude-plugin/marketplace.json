@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "Lucasrvdl",
+  "description": "okfbrain — fidelity-first OKF knowledge brains.",
+  "owner": {
+    "name": "Lucas Lucena"
+  },
+  "plugins": [
+    {
+      "name": "okfbrain",
+      "source": "./",
+      "description": "Fidelity-first OKF knowledge brains: build, grow (solo loops or parallel miners + strong integrator), ask, teach, audit — with mechanical verification, hybrid lexical+semantic search, and any-vendor executors.",
+      "category": "documentation",
+      "keywords": [
+        "okf",
+        "knowledge",
+        "markdown",
+        "brain",
+        "fidelity",
+        "agents"
+      ],
+      "license": "MIT"
+    }
+  ]
+}

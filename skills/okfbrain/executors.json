@@ -1,0 +1,15 @@
+{
+  "$comment": "okfbrain executor profiles — friendly names for agent CLIs used by okf_loop.py (--executor NAME). Shipped defaults live here (SKILL_DIR/executors.json); personal overrides go in ~/.okfbrain/executors.json (same shape, wins on conflict). 'default' names the executor used when none is passed. Placeholders <...> must be edited before use. Never put API keys in this file — they live in your agent CLI's own vault or in environment variables.",
+  "default": "haiku",
+  "executors": {
+    "haiku": "claude -p --allowedTools Bash(py:*),Bash(uv:*),WebFetch,WebSearch --permission-mode acceptEdits --model haiku",
+    "sonnet": "claude -p --allowedTools Bash(py:*),Bash(uv:*),WebFetch,WebSearch --permission-mode acceptEdits --model sonnet",
+    "audit": "claude -p --allowedTools Bash(py:*),Bash(uv:*),WebFetch,WebSearch --permission-mode acceptEdits --model sonnet",
+    "flash": "opencode run --model opencode-go/deepseek-v4-flash",
+    "flash-pro": "opencode run --model opencode-go/deepseek-v4-pro",
+    "local": "opencode run --model ollama/<your-local-model>",
+    "lmstudio": "opencode run --model lmstudio/<model-id-loaded-in-lm-studio>",
+    "openrouter": "opencode run --model openrouter/<provider/model>",
+    "ollama-cloud": "opencode run --model ollama-cloud/<model>"
+  }
+}

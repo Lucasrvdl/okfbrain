@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# Generated / regenerable
+viz.html
+
+# OS
+.DS_Store
+Thumbs.db
