@@ -193,6 +193,7 @@ brain sync, smoke tests). Short version: copy `skills/okfbrain/` into
 
 ## Credits & license
 - OKF spec (`skills/okfbrain/reference/SPEC.md`) — Google Cloud Data team, **Apache-2.0**, vendored.
-- `okf_validate.py` & `okf_visualize.py` — derived from
-  [okf-skills](https://github.com/scaccogatto/okf-skills) by Marco Boffo (**MIT**).
+- Tool names & early inspiration — [okf-skills](https://github.com/scaccogatto/okf-skills)
+  by Marco Boffo (**MIT**); the validator and graph view here are independent
+  rewrites that share no code with it.
 - Everything else — **MIT © 2026 Lucas Lucena**.
