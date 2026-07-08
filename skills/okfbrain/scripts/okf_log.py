@@ -29,7 +29,7 @@ def main() -> int:
     ap = argparse.ArgumentParser(description="Append a dated provenance entry to a brain's log.md.")
     ap.add_argument("brain", type=Path)
     ap.add_argument("--note", required=True)
-    ap.add_argument("--kind", default="Update", help="Creation/Update/Expansion/Embed/Edit/Merge/Deprecation/Loop")
+    ap.add_argument("--kind", default="Update", help="Creation/Update/Expansion/Ingest/Embed/Edit/Learn/Merge/Deprecation/Loop")
     ap.add_argument("--agent", default="", help="harness, e.g. 'Claude Code', 'Codex'")
     ap.add_argument("--model", default="", help="model, e.g. 'opus-4.8'")
     ap.add_argument("--date", default="", help="YYYY-MM-DD (default: system today)")

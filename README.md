@@ -36,6 +36,8 @@ what you want in natural language and the AI infers the operation:
 - *learn / build* a subject → full method on a new brain
 - *expand / deepen / close gaps* → focused research on an existing brain
 - *edit* → add / remove / fix one concept
+- *ask* → cited answers from the brain; what's missing is researched, validated,
+  and written back (learn-on-miss)
 - *audit* → read-only health + gaps + fidelity check
 - *teach* → read-only tutoring, anchored in the brain
 - *merge* → hierarchical umbrella of brains
@@ -43,6 +45,20 @@ what you want in natural language and the AI infers the operation:
 
 The non-negotiables are always on: never invent, gaps explicit, provenance on every
 concept, validate at the end.
+
+## What's new in 0.11 — learn-on-miss (asking teaches the brain)
+- **Ask closes its own gaps**: a question the brain can't answer (fully or partly)
+  is researched on the spot — a micro-Expand at the brain's fidelity profile
+  (user-pointed corpora first, then the web) — validated, answered with brain
+  claims and fresh research clearly separated, then written back as a proper
+  concept (dedup, provenance, cross-links, verify+validate gates), logged as
+  `Learn`.
+- **Failed validation never becomes a concept**: it's answered as explicitly
+  uncertain and recorded as a Gaps entry — a declared gap beats a weak concept.
+- **Misses are coverage signals**: every asked-and-missed question lands in
+  `_learning/sessions.md` for the next loop to see. Opt out with "ask only".
+- **Teach stays a teacher**: questions the brain can't answer are noted and
+  learned AFTER the session — mid-lesson, the lesson comes first.
 
 ## What's new in 0.10 — semantic search + the LLM-Wiki complements
 - **`okf_embed.py`**: humble-hardware semantic index — Model2Vec STATIC embeddings

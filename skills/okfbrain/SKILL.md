@@ -200,7 +200,7 @@ Closed gaps: flip to `- [x]` and move the line to `log.md` on the next pass.
 | deepen / close gaps / grow area Y | **Expand** focused on Y, else worst gaps | never |
 | add / fix one concept | **Edit** — surgical; update index + log | never |
 | remove a concept | **Edit** — confirm FIRST | once |
-| what does the brain say about X? | **Ask** — READ-ONLY answer FROM the brain | never |
+| what does the brain say about X? | **Ask** — answer FROM the brain; a miss triggers learn-on-miss | never |
 | ingest this URL / PDF / article / note | **Ingest** — absorb ONE source into the brain | never |
 | audit / review / check | **Audit** — READ-ONLY | never |
 | audit and fix | Audit, THEN fix ERRORs (+confirmed removals) | removals only |
@@ -210,11 +210,35 @@ Closed gaps: flip to `- [x]` and move the line to `log.md` on the next pass.
 
 - **Ask** = quick factual consult: locate the concepts (`okf_search.py`, then read
   them), answer ONLY from what they say, and cite each claim's concept id
-  (`area/concept`). Not in the brain ⇒ say it's a gap — never top up from general
-  knowledge. No files are written — EXCEPT: if the answer synthesized something
-  real that no concept states yet, OFFER in one line to save it as a concept
-  (with the citations the answer already used). Explorations compound instead of
-  evaporating in chat. (A longer session that turns into study ⇒ Teach.)
+  (`area/concept`). Never top up silently from general knowledge — whatever the
+  brain lacks goes through **learn-on-miss** (next bullet). Beyond that, no files
+  are written — EXCEPT: if the answer synthesized something real that no concept
+  states yet, OFFER in one line to save it as a concept (with the citations the
+  answer already used). Explorations compound instead of evaporating in chat. (A
+  longer session that turns into study ⇒ Teach.)
+- **Learn-on-miss** (default inside Ask — asking teaches the brain): when no
+  concept answers the question, or answers only part of it, don't stop at "it's
+  a gap":
+  1. **Declare the miss** in one line, answering whatever IS covered from the
+     brain as usual.
+  2. **Research the missing part** as a micro-Expand: sources actually read
+     (user-pointed corpora first, then the web), at THIS brain's fidelity
+     profile. Your memory of the subject is still not a source.
+  3. **Validate per profile** — fact-check, refute risky claims before relaying
+     them; anything the profile wants verbatim enters only via saved raw source
+     + `okf_excerpt.py`, never from a fetch summary.
+  4. **Answer**, keeping brain-claims (concept ids) visibly apart from fresh
+     research (source citations).
+  5. **Write it back**: dedup-search, then a proper concept in the right area
+     (template frontmatter + provenance + ≥2 relative cross-links + area index
+     updated + gates verify/validate), and `okf_log.py --kind Learn` naming the
+     question it answers; if this closes an existing Gaps entry, flip it per the
+     Gaps rule. Research that FAILED validation is delivered as explicitly
+     uncertain and recorded as a Gaps entry, NOT a concept — a declared gap
+     beats a weak concept.
+  Log the question in `_learning/sessions.md` (asked-and-missed = a coverage
+  signal for the next loop). The user can say "ask only" / "só o cérebro" to
+  skip research: then a miss is reported as a gap and nothing is written.
 - **Ingest** = absorb ONE given source (URL, PDF, file, pasted text) — the
   source-push twin of the map-driven Expand:
   1. SAVE it immutable: raw download into `_sources/<date>-<slug>.<ext>` (or
@@ -235,8 +259,11 @@ Closed gaps: flip to `- [x]` and move the line to `log.md` on the next pass.
   sources, OCR, `confidence: low`, orphan concepts). **Never edit while
   auditing.**
 - **Teach** teaches ONLY what's in the brain, citing concepts; if it isn't there,
-  say it's a gap — **don't fill from general knowledge**. Modes: tour / course /
-  deep-dive / socratic / quiz. Every session updates `_learning/`.
+  say it's a gap — **don't fill from general knowledge**. A student question the
+  brain can't answer ⇒ note it (`_learning/sessions.md` to-revisit + Gaps) and
+  run learn-on-miss AFTER the session — mid-lesson, the lesson comes first.
+  Modes: tour / course / deep-dive / socratic / quiz. Every session updates
+  `_learning/`.
 - **Merge** = hierarchical umbrella: **COPY (don't move)** each brain into a
   subfolder (skip `viz.html`; strip `okf_version` from each sub-brain's root
   `index.md`); the NEW root `index.md` carries `okf_version: "0.1"` and maps the
@@ -293,7 +320,7 @@ Every change appends a dated `date · harness · model · action` entry to `log.
 puts harness/model in the entry line):
 
 ```bash
-<RUN> "<SKILL_DIR>/scripts/okf_log.py" "<brain>" --kind <Creation|Update|Expansion|Ingest|Embed|Edit|Merge|Deprecation|Loop> \
+<RUN> "<SKILL_DIR>/scripts/okf_log.py" "<brain>" --kind <Creation|Update|Expansion|Ingest|Embed|Edit|Learn|Merge|Deprecation|Loop> \
   --agent "<harness>" --model "<model>" --note "<what changed>"
 ```
 
